@@ -5,6 +5,7 @@ async function listar(req, res) {
     const livros = await livroService.getTodosLivros();
     res.json(livros);
   } catch (err) {
+    console.error("Erro ao listar livros:", err);
     res.status(500).send("Erro ao obter dados.");
   }
 }
@@ -20,27 +21,41 @@ async function buscarPorId(req, res) {
 
     res.json(livro);
   } catch (err) {
+    console.error("Erro ao buscar livro por ID:", err);
     res.status(500).json({ erro: "Erro ao buscar o livro." });
   }
 }
 
 async function criar(req, res) {
   try {
-    const novoLivro = req.body; // Pega os dados enviados pelo cliente
+    const novoLivro = req.body;
+
+    // Log para debug local: confirma se a CapaUrl está chegando
+    console.log("Tentando cadastrar livro:", novoLivro.Titulo);
+    console.log(
+      "URL da Capa recebida:",
+      novoLivro.CapaUrl || "Nenhuma capa enviada",
+    );
+
     await livroService.criarLivro(novoLivro);
     res.status(201).json({ mensagem: "Livro criado com sucesso!" });
   } catch (err) {
+    console.error("Erro ao criar livro:", err);
     res.status(500).json({ erro: "Erro ao cadastrar livro." });
   }
 }
 
 async function atualizar(req, res) {
   try {
-    const { id } = req.params; // Pega o ID da URL
-    const dadosNovos = req.body; // Pega os novos dados do Body
+    const { id } = req.params;
+    const dadosNovos = req.body;
+
+    console.log(`Atualizando livro ID ${id}:`, dadosNovos.Titulo);
+
     await livroService.atualizarLivro(id, dadosNovos);
     res.json({ mensagem: "Livro atualizado com sucesso!" });
   } catch (err) {
+    console.error("Erro ao atualizar livro:", err);
     res.status(500).json({ erro: "Erro ao atualizar livro." });
   }
 }
@@ -58,6 +73,7 @@ async function excluir(req, res) {
 
     res.json({ mensagem: "Livro excluído com sucesso!" });
   } catch (err) {
+    console.error("Erro ao excluir livro:", err);
     res.status(500).json({ erro: "Erro ao excluir livro." });
   }
 }

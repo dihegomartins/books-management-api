@@ -13,10 +13,8 @@ async function getLivroPorId(id) {
     .request()
     .input("id", sql.Int, id)
     .query("SELECT * FROM Livros WHERE Id = @id");
-  return resultado.recordset[0]; // Retorna o primeiro (e único) item ou undefined
+  return resultado.recordset[0];
 }
-
-// Não esqueça de exportar!
 
 async function criarLivro(livro) {
   let pool = await sql.connect(config);
@@ -25,8 +23,9 @@ async function criarLivro(livro) {
     .input("titulo", sql.VarChar, livro.Titulo)
     .input("autor", sql.VarChar, livro.Autor)
     .input("ano", sql.Int, livro.AnoPublicacao)
+    .input("capaUrl", sql.VarChar, livro.CapaUrl || null) // Novo campo
     .query(
-      "INSERT INTO Livros (Titulo, Autor, AnoPublicacao) VALUES (@titulo, @autor, @ano)",
+      "INSERT INTO Livros (Titulo, Autor, AnoPublicacao, CapaUrl) VALUES (@titulo, @autor, @ano, @capaUrl)",
     );
   return resultado;
 }
@@ -39,8 +38,9 @@ async function atualizarLivro(id, dadosNovos) {
     .input("titulo", sql.VarChar, dadosNovos.Titulo)
     .input("autor", sql.VarChar, dadosNovos.Autor)
     .input("ano", sql.Int, dadosNovos.AnoPublicacao)
+    .input("capaUrl", sql.VarChar, dadosNovos.CapaUrl || null)
     .query(
-      "UPDATE Livros SET Titulo = @titulo, Autor = @autor, AnoPublicacao = @ano WHERE Id = @id",
+      "UPDATE Livros SET Titulo = @titulo, Autor = @autor, AnoPublicacao = @ano, CapaUrl = @capaUrl WHERE Id = @id",
     );
 }
 
