@@ -46,3 +46,45 @@ A API permite as seguintes operações no endpoint `/livros`:
    ```bash
    node server.js
    ```
+
+## 📖 Documentação da API
+
+Todos os requests devem ser feitos para o endereço:  
+`https://books-management-api-o9z2.onrender.com`
+
+### 1. Listar todos os livros
+
+- **Método:** `GET`
+- **Endpoint:** `/livros`
+- **Resposta de Sucesso (200 OK):** Um array contendo todos os objetos de livros.
+
+### 2. Buscar um livro por ID
+
+- **Método:** `GET`
+- **Endpoint:** `/livros/:id`
+- **Exemplo:** `/livros/1`
+- **Resposta de Erro (404 Not Found):** `{"mensagem": "Livro não encontrado."}`
+
+### 3. Cadastrar um novo livro
+
+- **Método:** `POST`
+- **Endpoint:** `/livros`
+- **Corpo da Requisição (JSON):**
+  ```json
+  {
+    "Titulo": "O Alquimista",
+    "Autor": "Paulo Coelho",
+    "AnoPublicacao": 1988
+  }
+  ```
+
+### 4. Atualizar um livro
+
+- **Método:** `PUT`
+- **Endpoint:** `/livros/:id`
+- **Corpo da Requisição (JSON):** Enviar os campos que deseja alterar.
+
+### 5. Excluir um livro
+
+- **Método:** `DELETE`
+- **Endpoint:** `/livros/:id`

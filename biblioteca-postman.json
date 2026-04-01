@@ -1,0 +1,133 @@
+{
+  "info": {
+    "_postman_id": "7ee2d7c2-7e3b-4389-b629-6d0f5b24974c",
+    "name": "My Collection",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53684400",
+    "_collection_link": "https://go.postman.co/collection/53684400-7ee2d7c2-7e3b-4389-b629-6d0f5b24974c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Biblioteca-API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://books-management-api-o9z2.onrender.com/livros",
+          "protocol": "https",
+          "host": [
+            "books-management-api-o9z2",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "livros"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Criar livro",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"Titulo\": \"O Pequeno Príncipe\",\r\n  \"Autor\": \"Antoine de Saint-Exupéry\",\r\n  \"AnoPublicacao\": 1943\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://books-management-api-o9z2.onrender.com/livros",
+          "protocol": "https",
+          "host": [
+            "books-management-api-o9z2",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "livros"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Atualizar Livro",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"Titulo\": \"Clean Code (Edição Revisada)\",\r\n  \"Autor\": \"Robert C. Martin\",\r\n  \"AnoPublicacao\": 2008\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://books-management-api-o9z2.onrender.com/livros/1",
+          "protocol": "https",
+          "host": [
+            "books-management-api-o9z2",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "livros",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Excluir Livro",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://books-management-api-o9z2.onrender.com/livros/24",
+          "protocol": "https",
+          "host": [
+            "books-management-api-o9z2",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "livros",
+            "24"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Buscar livro por ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://books-management-api-o9z2.onrender.com/livros/1",
+          "protocol": "https",
+          "host": [
+            "books-management-api-o9z2",
+            "onrender",
+            "com"
+          ],
+          "path": [
+            "livros",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
